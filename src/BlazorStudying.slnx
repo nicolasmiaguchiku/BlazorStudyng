@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BlazorStudyng/BlazorStudyng.csproj" />
+  <Project Path="BlazoStudyng.ComponentsLibary/BlazorStudyng.ComponentsLibary.csproj" />
+</Solution>
