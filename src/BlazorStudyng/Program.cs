@@ -11,11 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Habilita o suporte a componentes Razor (.razor)
-builder.Services.AddRazorComponents();
-
-/*Adiciona suporte ao modo Server-Side Blazor, onde a lógica dos componentes roda no servidor e a
-UI é sincronizada via SignalR (WebSocket)*/
-builder.Services.AddRazorComponents();
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents(); /*Adiciona suporte ao modo Server-Side Blazor, onde a lógica dos componentes roda no servidor e aUI é sincronizada via SignalR (WebSocket)*/
 
 /*Finaliza o registro de serviços e constrói a instância da aplicação (WebApplication). 
 Após essa linha, não é mais possível adicionar novos serviços.*/
@@ -47,7 +44,6 @@ app.UseAntiforgery();
 /*Mapeia e serve os arquivos estáticos da aplicação (CSS, JS, imagens, etc.) de forma otimizada.
 No .NET 9+, substituiu o UseStaticFiles() com melhor performance e fingerprinting automático.*/
 app.MapStaticAssets();
-
 
 app.MapRazorComponents<App>() //// define App como o componente raiz da aplicação, mapeando as rotas dos demais componentes a partir dele
     .AddInteractiveServerRenderMode(); // habilita o modo de renderização interativa via SignalR para os componentes que usarem @rendermode InteractiveServer
