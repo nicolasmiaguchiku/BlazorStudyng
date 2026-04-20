@@ -6,7 +6,7 @@
 
 <h1>Hello, world!</h1>
 
-<input type="text" placeholder="Digite um nome" @bind="AppState.Name" />
+<input type="text" placeholder="Digite um nome" @bind="name" />
 <button type="submit" @onclick="SubmitName">Enviar nome</button>
 
 <Component1 Name="@AppState.Name" />
@@ -15,4 +15,9 @@ Welcome to your new app.
 
 @code {
     private string name = string.Empty;
+
+    public void SubmitName()
+    {
+        AppState.Name = name;
+    }
 }
