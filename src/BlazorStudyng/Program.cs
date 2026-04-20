@@ -1,5 +1,6 @@
 /*Importa o namespace onde está o componente raiz App da aplicação. Sem isso,
 o compilador não encontra a classe App usada mais adiante.*/
+using BlazorStudyng;
 using BlazorStudyng.Components;
 
 /*Cria o builder da aplicação, que é o objeto responsável por configurar serviços e o pipeline HTTP. 
@@ -13,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Habilita o suporte a componentes Razor (.razor)
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents(); /*Adiciona suporte ao modo Server-Side Blazor, onde a lógica dos componentes roda no servidor e aUI é sincronizada via SignalR (WebSocket)*/
+
+builder.Services.AddScoped<AppState>(); /*Registra a classe AppState como um serviço Scoped, ou seja, uma nova instância será criada para cada conexão de usuário.
 
 /*Finaliza o registro de serviços e constrói a instância da aplicação (WebApplication). 
 Após essa linha, não é mais possível adicionar novos serviços.*/
